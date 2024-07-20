@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1e5wi5o1j22"]
+
+[ext_resource type="FontFile" uid="uid://brei444jqmg3d" path="res://art/PixelOperator8.ttf" id="1_58w84"]
+[ext_resource type="Script" path="res://scenes/level/final.gd" id="1_ytuqx"]
+[ext_resource type="StyleBox" uid="uid://dtxfc6ifyi0vl" path="res://scenes/misc/button_hover.tres" id="3_edqqo"]
+[ext_resource type="StyleBox" uid="uid://bv6ske5ruanul" path="res://scenes/misc/new_style_box_flat.tres" id="4_jo7tw"]
+
+[sub_resource type="Theme" id="Theme_vdaax"]
+Button/styles/hover = ExtResource("3_edqqo")
+Button/styles/normal = ExtResource("4_jo7tw")
+Button/styles/pressed = ExtResource("3_edqqo")
+
+[sub_resource type="Theme" id="Theme_2m3l5"]
+Button/styles/hover = ExtResource("3_edqqo")
+Button/styles/normal = ExtResource("4_jo7tw")
+Button/styles/pressed = ExtResource("3_edqqo")
+
+[node name="Final" type="CanvasLayer"]
+script = ExtResource("1_ytuqx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.236748, 0.30496, 1, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_58w84")
+theme_override_font_sizes/font_size = 31
+text = "The end"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.426
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vdaax")
+theme_override_fonts/font = ExtResource("1_58w84")
+theme_override_font_sizes/font_size = 24
+text = "Play Again"
+expand_icon = true
+
+[node name="Quit" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.574
+anchor_right = 0.5
+anchor_bottom = 0.636
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_2m3l5")
+theme_override_fonts/font = ExtResource("1_58w84")
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+
+[connection signal="button_up" from="Control/PlayAgain" to="." method="_on_play_again_button_up"]
+[connection signal="button_up" from="Control/Quit" to="." method="_on_quit_button_up"]

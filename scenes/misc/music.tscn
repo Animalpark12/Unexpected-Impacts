@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://x8ryhfcjkv0g"]
+
+[ext_resource type="AudioStream" uid="uid://8o2i6ojopyhn" path="res://art/sounds/Eric Skiff - Underclocked (underunderclocked mix).mp3" id="1_1dytx"]
+
+[node name="Node" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_1dytx")
+volume_db = -20.0
+autoplay = true

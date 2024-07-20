@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=3 uid="uid://cx4lm7m2sti6v"]
+
+[ext_resource type="Script" path="res://scenes/level/start.gd" id="1_pm24i"]
+[ext_resource type="FontFile" uid="uid://brei444jqmg3d" path="res://art/PixelOperator8.ttf" id="2_qf67n"]
+[ext_resource type="StyleBox" uid="uid://dtxfc6ifyi0vl" path="res://scenes/misc/button_hover.tres" id="3_txdpy"]
+[ext_resource type="StyleBox" uid="uid://bv6ske5ruanul" path="res://scenes/misc/new_style_box_flat.tres" id="4_4m3av"]
+
+[sub_resource type="Theme" id="Theme_s8u6e"]
+Button/styles/hover = ExtResource("3_txdpy")
+Button/styles/normal = ExtResource("4_4m3av")
+Button/styles/pressed = ExtResource("3_txdpy")
+
+[sub_resource type="Theme" id="Theme_buqar"]
+Button/styles/hover = ExtResource("3_txdpy")
+Button/styles/normal = ExtResource("4_4m3av")
+Button/styles/pressed = ExtResource("3_txdpy")
+
+[node name="Start" type="CanvasLayer"]
+script = ExtResource("1_pm24i")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.236748, 0.30496, 1, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_qf67n")
+theme_override_font_sizes/font_size = 31
+text = "Unexpected Impacts"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.426
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_s8u6e")
+theme_override_fonts/font = ExtResource("2_qf67n")
+theme_override_font_sizes/font_size = 24
+text = "Play"
+expand_icon = true
+
+[node name="Quit" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.574
+anchor_right = 0.5
+anchor_bottom = 0.636
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_buqar")
+theme_override_fonts/font = ExtResource("2_qf67n")
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+
+[connection signal="button_up" from="Control/PlayAgain" to="." method="_on_play_again_button_up"]
+[connection signal="button_up" from="Control/Quit" to="." method="_on_quit_button_up"]
