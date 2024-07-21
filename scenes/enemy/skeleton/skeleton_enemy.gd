@@ -41,7 +41,7 @@ func move(delta):
 	if !dead:
 		if !is_chased:
 			velocity += direction * speed * delta
-		elif !Global.playerAlive:
+		elif !Global.playerAlive or Global.playerInvisible == true:
 			is_chased = false
 		elif is_chased and !taking_damage and Global.playerAlive:
 			speed = 30

@@ -23,7 +23,6 @@ var jump_buffer_time: float = 0.2
 
 var jump_available: bool = true
 var jump_buffer: bool = false
-var invincible: bool = false
 var attacking: bool = false
 var hurt: bool = false
 var dead: bool = false
@@ -76,6 +75,7 @@ func _physics_process(delta):
 
 	handle_animation(direction, velocity.y)
 	move_and_slide()
+	print(Global.playerInvisible)
 
 func move(direction: int) -> void:
 	if !dead and !attacking:
@@ -132,25 +132,25 @@ func powerup(type: int) -> void:
 		0:
 			speed = 150
 			jump_velocity = ((2 * jump_height) / jump_time_to_peak) * -1
-			invincible = false
+			Global.playerInvisible = false
 			animation_player.speed_scale = 0.9
 			sprite_2d.modulate = Color("ffffff")
 		1:
 			speed = 110
 			jump_velocity = 1.25*(((2 * jump_height) / jump_time_to_peak) * -1)
-			invincible = false
+			Global.playerInvisible = false
 			animation_player.speed_scale = 0.6
 			sprite_2d.modulate = Color("ffffff")
 		2:
 			speed = 250
 			jump_velocity = 0.85*(((2 * jump_height) / jump_time_to_peak) * -1)
-			invincible = false
+			Global.playerInvisible = false
 			animation_player.speed_scale = 1.15
 			sprite_2d.modulate = Color("ffffff")
 		3:
 			speed = 150
 			jump_velocity = ((2 * jump_height) / jump_time_to_peak) * -1
-			invincible = true
+			Global.playerInvisible = true
 			animation_player.speed_scale = 0.9
 			sprite_2d.modulate = Color("ffffff32")
 
@@ -159,7 +159,7 @@ func _on_area_2d_body_entered(body) -> void:
 		body.take_damage()
 
 func take_damage(position: CharacterBody2D) -> void:
-	if !invincible:
+	if !Global.playerInvisible:
 		Global.playerHealth -= 1
 		enemy = position
 		hurt = true
